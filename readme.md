@@ -203,3 +203,10 @@ In your project root (`fastmcp-temp-server`), add a file named `mcp.json`:
 
 ## 🔗 References
 
+[FastMCP](https://gofastmcp.com/getting-started/welcome)
+
+[FastMCP Quickstart](https://gofastmcp.com/getting-started/quickstart)
+
+[How to Create an MCP Server in Python](https://gofastmcp.com/tutorials/create-mcp-server)
+
+[FastMCP Cloud](https://fastmcp.cloud/)
