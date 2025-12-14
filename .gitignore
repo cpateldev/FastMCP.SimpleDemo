@@ -1,0 +1,14 @@
+# Ignore Python cache files
+__pychache__
+
+# Ignore virtual environment directories
+venv/
+env/
+
+# Ignore FastMCP build artifacts
+build/
+dist/
+
+# Ignore IDE specific files
+# .vscode/
+
