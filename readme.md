@@ -58,7 +58,7 @@ if __name__ == "__main__":
 ## 🌐 Step 3: Run the Server
 Start your server:
 ```PowerShell
-fastmcp run my_server.py:mcp --transport http --port 8000
+fastmcp run tempconversion-mcp-http.py:mcp --transport http --port 8000
 ```
 `output:`
 

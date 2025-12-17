@@ -1,8 +1,32 @@
 {
     "servers": {
-        "my-fastmcp-server": {
+        "tempconversion-mcp-http": {
             "type": "http",
-            "url": "http://127.0.0.1:8000/mcp"            
-        }
+            "url": "http://127.0.0.1:8001/mcp"            
+        },
+        "tempconversion-mcp-stdio": {
+			"type": "stdio",
+			"command": "uv",
+			"cwd": "${workspaceFolder}",
+			"args": [
+				"run",
+				"tempconversion-mcp-stdio.py"
+			]
+		},
+        "tempconversion-mcp-stdio-debug": {
+			"type": "stdio",
+			"command": "uv",
+			"cwd": "${workspaceFolder}",
+			"args": [
+				"run",
+				"--",
+				"python",
+				"-m",
+				"debugpy",
+				"--listen",
+				"0.0.0.0:5678",
+				"tempconversion-mcp-stdio.py"
+			]
+		}
     }
 }
