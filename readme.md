@@ -49,8 +49,8 @@ def fahrenheit_to_celsius(fahrenheit: float) -> float:
 
 if __name__ == "__main__":
     # Expose via HTTP transport
-    #mcp.run(host="0.0.0.0", port=8000)
-    mcp.run(transport="http", port=8000)
+    #mcp.run(host="0.0.0.0", port=8001)
+    mcp.run(transport="http", port=8001)
 ```
 
 ---
@@ -58,7 +58,7 @@ if __name__ == "__main__":
 ## 🌐 Step 3: Run the Server
 Start your server:
 ```PowerShell
-fastmcp run tempconversion-mcp-http.py:mcp --transport http --port 8000
+fastmcp run tempconversion-mcp-http.py:mcp --transport http --port 8001
 ```
 `output:`
 
@@ -74,20 +74,20 @@ fastmcp run tempconversion-mcp-http.py:mcp --transport http --port 8000
 │                  🖥  Server name: Temp Conversion MCP Server                 │
 │                                                                              │
 │                  📦 Transport:   HTTP                                        │
-│                  🔗 Server URL:  http://127.0.0.1:8000/mcp                   │
+│                  🔗 Server URL:  http://127.0.0.1:8001/mcp                   │
 │                                                                              │
 │                  📚 Docs:        https://gofastmcp.com                       │
 │                  🚀 Hosting:     https://fastmcp.cloud                       │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 [12/14/25 11:19:02] INFO     Starting MCP server 'Temp Conversion MCP Server' with transport 'http' on                server.py:2582
-                             http://127.0.0.1:8000/mcp                                                                              
+                             http://127.0.0.1:8001/mcp                                                                              
 INFO:     Started server process [26956]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
 ```
-It will listen on `http://localhost:8000/mcp`.
+It will listen on `http://localhost:8001/mcp`.
 
 ---
 
@@ -97,7 +97,7 @@ It will listen on `http://localhost:8000/mcp`.
 3. Choose **HTTP transport**.
 4. Enter:
    - **Name**: `Temp Conversion MCP`
-   - **URL**: `http://localhost:8000/mcp`
+   - **URL**: `http://localhost:8001/mcp`
 5. Save and connect.
 
 Now, your AI Toolkit can call `celsius_to_fahrenheit` and `fahrenheit_to_celsius` directly as MCP tools.
@@ -109,12 +109,36 @@ Now, your AI Toolkit can call `celsius_to_fahrenheit` and `fahrenheit_to_celsius
 
 ```json
 {
-    "servers": {
-        "my-fastmcp-server": {
-            "type": "http",
-            "url": "http://127.0.0.1:8000/mcp"            
-        }
+  "servers": {
+    "tempconversion-mcp-http": {
+        "type": "http",
+        "url": "http://127.0.0.1:8001/mcp"            
+    },
+    "tempconversion-mcp-stdio": {
+      "type": "stdio",
+      "command": "uv",
+      "cwd": "${workspaceFolder}",
+      "args": [
+        "run",
+        "tempconversion-mcp-stdio.py"
+      ]
+    },
+    "tempconversion-mcp-stdio-debug": {
+      "type": "stdio",
+      "command": "uv",
+      "cwd": "${workspaceFolder}",
+      "args": [
+        "run",
+        "--",
+        "python",
+        "-m",
+        "debugpy",
+        "--listen",
+        "0.0.0.0:5678",
+        "tempconversion-mcp-stdio.py"
+      ]
     }
+  }
 }
 ```
 - Use MCP tools command from mcp.json to start / stop / restart fastmcp server
@@ -143,7 +167,7 @@ In your project root (`fastmcp-temp-server`), add a file named `mcp.json`:
   "description": "A simple FastMCP server for temperature conversion tools.",
   "transport": {
     "type": "http",
-    "url": "http://localhost:8000"
+    "url": "http://localhost:8001"
   },
   "tools": [
     {

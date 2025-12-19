@@ -1,5 +1,8 @@
 # Ignore Python cache files
-__pychache__
+__pychache__/
+*.py[codz]
+*$py.class
+
 
 # Ignore virtual environment directories
 venv/
