@@ -2,13 +2,24 @@ Perfect — let’s walk through building a **FastMCP server** with a simple tem
 
 ---
 
+## Setup pip
+Make sure you have `pip` installed and updated:
+
+```PowerShell
+python -m ensurepip --upgrade
+python -m pip install --upgrade pip
+```
+
 ## 🛠 Step 1: Project Setup
 1. Create a new folder, e.g. `FastMCP.SimpleDemo`.
 2. Initialize a Python environment:
 
 ```PowerShell
 python -m venv .venv
-source .venv/bin/activate   # or .venv\Scripts\activate on Windows
+.venv\Scripts\activate # on Windows
+
+source .venv/bin/activate # on macOS/Linux
+
 pip install fastmcp
 ```
 3. Check fastmcp version
